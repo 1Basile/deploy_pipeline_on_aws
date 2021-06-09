@@ -1,2 +1,2 @@
-# large_pipeline_for_java_project
-Epam pipeline for java project
+# Pipeline for java project
+Repository containing all necessary files/scripts for maintaining simple pipeline(dev, stage, prod) for example java project.
