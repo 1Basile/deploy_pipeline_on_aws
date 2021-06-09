@@ -1,5 +1,5 @@
 # Exclude private credentials
-# **/tf_user/*
+terraform/tf_user/.aws/*
 
 # Local .terraform directories
 **/.terraform/*
