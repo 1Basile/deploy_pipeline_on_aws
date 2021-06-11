@@ -1,46 +1,59 @@
 # creating aws instances
-resource "aws_instance" "ansible_machine" {
+
+resource "aws_instance" "jenkins_machine" {
     ami = "ami-05f7491af5eef733a"
     instance_type = local.default_instance_type
-    key_name = "ansible_key"
+    key_name = aws_key_pair.jenkins_key.key_name
 
     tags = {
-      Name = "Ansible machine",
+      Name = "jenkins machine",
       distro = "Ubuntu"
     }
+
+    vpc_security_group_ids = [aws_security_group.main.id]
 }
 
+
 resource "aws_instance" "test_machine" {
+    count = local.test_machine_count
     ami = local.test_machine_ami
     instance_type = local.default_instance_type
+    key_name = aws_key_pair.test_key.key_name
 
     tags = {
-      Name = "Test_1",
+      Name = "test_${count.index + 1}",
       distro = local.test_machine_distro
-      key_name = "test_key"
     }
+
+    vpc_security_group_ids = [aws_security_group.main.id]
+
 }
 
 resource "aws_instance" "stage_machine" {
+    count = local.stage_machine_count
     ami = local.prod_machine_ami
     instance_type = local.default_instance_type
+    key_name = aws_key_pair.stage_key.key_name
 
     tags = {
-      Name = "Stage_1",
+      Name = "stage_${count.index + 1}",
       distro = local.prod_machine_distro
-      key_name = "stage_key"
     }
+
+    vpc_security_group_ids = [aws_security_group.main.id]
 }
 
 resource "aws_instance" "prod_machine" {
+    count = local.prod_machine_count
     ami = local.prod_machine_ami
     instance_type = local.default_instance_type
+    key_name = aws_key_pair.prod_key.key_name
 
     tags = {
-      Name = "Prod_1",
+      Name = "prod_${count.index + 1}",
       distro = local.prod_machine_distro
-      key_name = "prod_key"
     }
+
     vpc_security_group_ids = [aws_security_group.main.id]
 }
 
