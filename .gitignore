@@ -1,9 +1,9 @@
 # Exclude private credentials
 terraform/tf_user/.aws/**
-/access_keys/*
+access_keys/**
 
 # Local .terraform directories
-**/.terraform/*
+**/.terraform/
 
 # .tfstate files
 *.tfstate
