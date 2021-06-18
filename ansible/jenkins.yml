@@ -1,0 +1,26 @@
+---
+
+- name: Install java on machines
+  hosts: all
+  become: yes
+
+  roles:
+    - role: install-java
+
+- name: Configurate Jenkins slave machines.
+  hosts: all:!jenkins_machines
+  become: yes
+
+  roles:
+    - role: install-jenkins-slaves
+
+- name: Install and configure Jenkins on master machine.
+  hosts: jenkins_machines
+  become: yes
+
+  vars:
+    jenkins_hostname: localhost
+    jenkins_admin_username: admin
+    jenkins_admin_password: admin
+  roles:
+    - role: install-jenkins-master

@@ -1,0 +1,36 @@
+---
+
+- name: Create nodes folders for test machines.
+  file:
+    path: "{{jenkins_home}}/nodes/{{ item }}"
+    state: directory
+  with_inventory_hostnames:
+  - all:!jenkins_machines
+
+- name: Move right ssh-host-key file to folders.
+  copy:
+    src: "{{ item.split('_')[0] }}__ssh_host_key.xml"
+    dest: "{{jenkins_home}}/nodes/{{ item }}/ssh-host-key.xml"
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+  with_inventory_hostnames:
+  - all:!jenkins_machines
+
+- name: Move right config.xml file to folders.
+  copy:
+    src: "{{ item }}__config.xml"
+    dest: "{{jenkins_home}}/nodes/{{ item }}/config.xml"
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+  with_inventory_hostnames:
+  - all:!jenkins_machines
+
+- name: Move right credentials.xml file.
+  copy:
+    src: "credentials.xml"
+    dest: "{{jenkins_home}}/credentials.xml"
+    owner: jenkins
+    group: jenkins
+    mode: 0644

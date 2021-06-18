@@ -1,0 +1,49 @@
+---
+# tasks file for deploy_jenkins_master
+
+- name: Installing Java.
+  apt:
+    name: default-jre
+    state: latest
+    update_cache: yes
+  become: true
+
+- name: Adding GPG key to Jenkins repo.
+  apt_key:
+    url: "{{jenkins.gpg_key_URL}}"
+  become: true
+
+- name: Adding repo to source list.
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian binary/
+
+- name: Installing Jenkins
+  apt:
+    name: jenkins
+    state: latest
+    update_cache: yes
+
+- name: Changing Jenkins JAVA options
+  lineinfile:
+    path: /etc/init.d/jenkins
+    regexp: '^JAVA_ARGS='
+    line: 'JAVA_ARGS="{{jenkins.JAVA_OPTIONS}}"'
+    insertbefore: '^DAEMON_ARGS='
+  become: true
+
+- name: Create initialization scripts directory
+  file: path={{ jenkins.home }}/init.groovy.d
+        state=directory
+        owner=jenkins
+        group=jenkins
+        mode=0775
+
+- name: Add initialization script to setup basic security
+  template: src=security.groovy.j2
+            dest={{ jenkins.home }}/init.groovy.d/security.groovy
+
+- name: Start Jenkins service and enable on boot
+  service:
+    name: jenkins
+    state: started
+    enabled: yes

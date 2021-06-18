@@ -1,0 +1,121 @@
+---
+jenkins_plugins_install_dependencies: true
+jenkins_plugins:
+  # Github integration and it's dependencies
+  - name: git
+    version: 4.7.2
+  - name: scm-api
+    version: 2.6.4
+  - name: credentials
+    version: 2.5
+  - name: jsch
+    version: 0.1.55.2
+  - name: caffeine-api
+    version: 2.9.1-23.v51c4e2c879c8
+  - name: display-url-api
+    version: 2.3.4
+  - name: apache-httpcomponents-client-4-api
+    version: 4.5.13-1.0
+  - name: trilead-api
+    version: 1.0.13
+  - name: display-url-api
+    version: 2.3.4
+  - name: workflow-scm-step
+    version: 2.12
+  - name: workflow-step-api
+    version: 2.23
+  - name: git-client
+    version: 3.7.1
+  - name: ssh-credentials
+    version: 1.18.2
+  - name: mailer
+    version: 1.34
+  - name: script-security
+    version: 1.77
+  - name: structs
+  # Pipeline project type, and it's dependencies
+  - name: workflow-aggregator
+    version: 2.6
+  - name: pipeline-milestone-step
+    version: 1.3.1
+  - name: workflow-basic-steps
+    version: 2.11
+  - name:  pipeline-build-step
+    version: 2.7
+  - name: pipeline-input-step
+    version: 2.12
+  - name: workflow-multibranch
+    version: 2.24
+  - name: cloudbees-folder
+    version: 6.15
+  - name: workflow-cps-global-lib
+    version: 2.11
+  - name: pipeline-stage-view
+    version: 2.19
+  - name: workflow-support
+    version: 3.8
+  - name: workflow-api
+    version: 2.44
+  - name: jackson2-api
+    version: 2.12.3
+  - name: pipeline-stage-step
+    version: 2.5
+  - name: workflow-cps
+    version: 2.92
+  - name: workflow-job
+    version: 2.41
+  - name: pipeline-model-definition
+    version: 1.3.2
+  - name: lockable-resources
+    version: 2.3
+  - name: workflow-durable-task-step
+    version: 2.22
+  - name: durable-task
+    version: 1.26
+  - name: pipeline-rest-api
+    version: 2.19
+  - name: handlebars
+    version: 3.0.8
+  - name: ace-editor
+    version: 1.1
+  - name: jquery-detached
+    version: 1.2.1
+  - name: matrix-project
+    version: 1.18
+  - name: pipeline-graph-analysis
+    version: 1.11
+  - name: git-server
+    version: 1.7
+  - name: branch-api
+    version: 2.6.4
+
+  - name: momentjs
+    version: 1.1
+  - name: credentials-binding
+    version: 1.13
+  - name: pipeline-stage-tags-metadata
+    version: 1.3.2
+  - name: docker-workflow
+    version: 1.14
+  - name: pipeline-model-api
+    version: 1.3.2
+  - name: pipeline-model-extensions
+    version: 1.3.2
+  - name: pipeline-model-declarative-agent
+    version: 1.1.1
+  - name: docker-commons
+    version: 1.5
+  - name: plain-credentials
+    version: 1.3
+  - name: authentication-tokens
+    version: 1.4
+  - name: junit
+    version: 1.29
+  - name: icon-shim
+    version: 3.0.0
+  - name: snakeyaml-api
+    version: 1.29.1
+  - name: ssh-agent
+    version: 1.23
+  - name: ssh-slaves
+    version: 1.32.0

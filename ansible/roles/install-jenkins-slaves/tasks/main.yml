@@ -1,0 +1,6 @@
+---
+# tasks file for install-jenkins-slaves
+- name: Creating root dir for jenkins builds.
+  file:
+    path: ~/jenkins_builds
+    state: directory
