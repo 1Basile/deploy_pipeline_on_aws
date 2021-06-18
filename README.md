@@ -1,4 +1,4 @@
-# Pipeline for java project
+# Deploy pipeline on AWS :octocat:
 Repository containing all necessary files/scripts for maintaining jenkins pipeline(dev, stage, prod).
 
 To deploy infrastructure, you need:
@@ -27,5 +27,5 @@ To deploy infrastructure, you need:
 	* _Update nodes private keys if needed._
 
 __Congrads, now you have deployed CI/CD pipline on AWS.
-P.s. Jenkins pipeline have to be configured manualy.__
+P.s. Jenkins pipeline have to be configured manualy :heart:.__
 
