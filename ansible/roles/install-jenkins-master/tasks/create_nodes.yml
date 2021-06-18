@@ -34,3 +34,11 @@
     owner: jenkins
     group: jenkins
     mode: 0644
+
+- name: Move right github-plugin-configuration.xml file.
+  copy:
+    src: "github-plugin-configuration.xml"
+    dest: "{{jenkins_home}}/github-plugin-configuration.xml"
+    owner: jenkins
+    group: jenkins
+    mode: 0644

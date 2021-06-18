@@ -9,7 +9,7 @@ resource "local_file" "hosts_cfg" {
 
       stage_machines = aws_instance.stage_machine
 
-#      prod_machines = aws_instance.prod_machine
+      prod_machines = aws_instance.prod_machine
       prod_machines_user = local.prod_machines_user
 
     }
@@ -30,8 +30,8 @@ resource "local_file" "jenkins_credentials_cfg" {
   content = templatefile("templates/jenkins_template_credentials.tmpl",
     {
       test_key_name = aws_key_pair.test_key.key_name
-      #test_private_key = replace(trimsuffix(trimprefix(tls_private_key.test_pk.private_key_pem, "-----BEGIN RSA PRIVATE KEY-----\n"), "-----END RSA PRIVATE KEY-----\n"), "\n", "")
-      test_private_key = tls_private_key.test_pk.private_key_pem
+      test_private_key = replace(trimsuffix(trimprefix(tls_private_key.test_pk.private_key_pem, "-----BEGIN RSA PRIVATE KEY-----\n"), "-----END RSA PRIVATE KEY-----\n"), "\n", "")
+      #test_private_key = tls_private_key.test_pk.private_key_pem
       test_user = local.test_machines_user
       stage_key_name = aws_key_pair.stage_key.key_name
       stage_private_key = replace(trimsuffix(trimprefix(tls_private_key.stage_pk.private_key_pem, "-----BEGIN RSA PRIVATE KEY-----\n"), "-----END RSA PRIVATE KEY-----\n"), "\n", "")

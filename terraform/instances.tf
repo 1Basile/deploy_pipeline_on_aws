@@ -51,19 +51,19 @@ resource "aws_instance" "stage_machine" {
     vpc_security_group_ids = [aws_security_group.ssh_access_sg.id, aws_security_group.web_server_sg.id]
 }
 
-#resource "aws_instance" "prod_machine" {
-#    count = local.prod_machine_count
-#    ami = local.prod_machine_ami
-#    instance_type = local.default_instance_type
-#    key_name = aws_key_pair.prod_key.key_name
-#
-#    tags = {
-#      Name = "prod_${count.index + 1}",
-#      type = "prod",
-#      jenkins_name = "prod_${count.index + 1}",
-#      distro = local.prod_machine_distro,
-#      user = "ubuntu"
-#    }
-#
-#    vpc_security_group_ids = [aws_security_group.ssh_access_sg.id, aws_security_group.web_server_sg.id]
-#}
+resource "aws_instance" "prod_machine" {
+    count = local.prod_machine_count
+    ami = local.prod_machine_ami
+    instance_type = local.default_instance_type
+    key_name = aws_key_pair.prod_key.key_name
+
+    tags = {
+      Name = "prod_${count.index + 1}",
+      type = "prod",
+      jenkins_name = "prod_${count.index + 1}",
+      distro = local.prod_machine_distro,
+      user = "ubuntu"
+    }
+
+    vpc_security_group_ids = [aws_security_group.ssh_access_sg.id, aws_security_group.web_server_sg.id]
+}

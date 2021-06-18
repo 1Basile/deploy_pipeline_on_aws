@@ -7,7 +7,7 @@
   <mode>EXCLUSIVE</mode>
   <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
   <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.32.0">
-    <host>18.157.182.198</host>
+    <host>18.157.180.151</host>
     <port>22</port>
     <credentialsId>test_key</credentialsId>
     <launchTimeoutSeconds>60</launchTimeoutSeconds>
